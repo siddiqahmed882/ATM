@@ -122,4 +122,8 @@ public class Bank {
     // if haven't find the user or incorrect pin
     return null;
   }
+
+  public Object getName() {
+    return this.name;
+  }
 }

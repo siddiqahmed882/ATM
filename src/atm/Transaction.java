@@ -34,4 +34,22 @@ public class Transaction {
     // set memo
     this.memo = memo;
   }
+
+  /* Get Transaction Amount */
+  public double getAmount() {
+    return this.amount;
+  }
+
+  /**
+   * Get a string summarazing the transaction
+   * 
+   * @return the summary string
+   */
+  public String getSummaryLine() {
+    if (this.amount >= 0) {
+      return String.format("%s : $% : %s", this.timeStamp.toString(), this.amount, this.memo);
+    } else {
+      return String.format("%s : $(%) : %s", this.timeStamp.toString(), this.amount, this.memo);
+    }
+  }
 }

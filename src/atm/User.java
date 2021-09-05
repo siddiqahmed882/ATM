@@ -46,6 +46,10 @@ public class User {
     return this.uuid;
   }
 
+  public String getFirstName() {
+    return this.firstName;
+  }
+
   /**
    * Check whether a given pin matches the true user pin
    * 
@@ -62,5 +66,47 @@ public class User {
       System.exit(1);
     }
     return false;
+  }
+
+  /**
+   * print summaries for the accounts of the user
+   */
+  public void printAccountsSummary() {
+    System.out.printf("\n\n %s's Accounts Summary\n", this.firstName);
+    for (int a = 0; a < this.accounts.size(); a++) {
+      System.out.printf("%d) %s \n", a + 1, this.accounts.get(a).getSummaryLine());
+    }
+    System.out.println();
+  }
+
+  /**
+   * Get the number of accounts of the user
+   * 
+   * @return the number of accounts
+   */
+  public int numAccounts() {
+    return this.accounts.size();
+  }
+
+  public void printAccTransHistory(int accIdx) {
+    this.accounts.get(accIdx).printTransHistory();
+  }
+
+  public double getAcctBalance(int AccIdx) {
+    return this.accounts.get(AccIdx).getBalance();
+  }
+
+  /**
+   * Get UUID of the particular account
+   * 
+   * @param accIdx the index of the account
+   * @return the UUID of the account
+   */
+  public String getAcctUUID(int accIdx) {
+    return this.accounts.get(accIdx).getUUID();
+  }
+
+  public void addAccTransaction(int accIdx, double amount, String memo) {
+    this.accounts.get(accIdx).addTransaction(amount, memo);
   }
 }
