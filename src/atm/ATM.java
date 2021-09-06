@@ -3,6 +3,7 @@ package atm;
 import java.util.Scanner;
 
 public class ATM {
+
     /* Main Menu Prompt */
     public static User mainMenuPrompt(Bank theBank, Scanner sc) {
         // inits
@@ -36,7 +37,7 @@ public class ATM {
         int choice;
         // user menu
         do {
-            System.out.printf("Welcome %s, what would you like to do?", theUser.getFirstName());
+            System.out.printf("Welcome %s, what would you like to do?\n", theUser.getFirstName());
             System.out.println(" 1) Show transaction history for the account");
             System.out.println(" 2) Withdraw");
             System.out.println(" 3) Deposit");
@@ -118,7 +119,7 @@ public class ATM {
         // get the account to transfer to
         do {
             System.out.printf("Enter the number (1-%d) of the account to trasfer to: ", theUser.numAccounts());
-            toAcc = sc.nextInt();
+            toAcc = sc.nextInt() - 1;
             if (toAcc < 0 || toAcc >= theUser.numAccounts()) {
                 System.out.println("Invalid Account. Please try again");
             }
@@ -127,7 +128,7 @@ public class ATM {
         // get the amount to transfer
         do {
             System.out.printf("Enter the amount to transfer (max %.02f) : $", accBalance);
-            amount = sc.nextDouble() - 1;
+            amount = sc.nextDouble();
             if (amount < 0) {
                 System.out.println("Amount must be greater than zero");
             } else if (amount > accBalance) {
@@ -172,7 +173,7 @@ public class ATM {
             if (amount < 0) {
                 System.out.println("Amount must be greater than zero");
             } else if (amount > accBalance) {
-                System.out.printf("Amount must not be greater than\n" + "balance of $%.02f", accBalance);
+                System.out.printf("Amount must not be greater than\n" + "balance of $%.02f \n", accBalance);
             }
         } while (amount < 0 || amount > accBalance);
 
@@ -180,7 +181,7 @@ public class ATM {
         sc.nextLine();
 
         // get the memo
-        System.out.println("Enter a memo");
+        System.out.print("Enter a memo: ");
         memo = sc.nextLine();
 
         // do the with drawal
@@ -217,17 +218,13 @@ public class ATM {
             if (amount < 0) {
                 System.out.println("Amount must be greater than zero");
             }
-            // else if (amount > accBalance) {
-            // System.out.printf("Amount must not be greater than\n" + "balance of $%.02f",
-            // accBalance);
-            // }
         } while (amount < 0);
 
         // gobble up rest of previous input
         sc.nextLine();
 
         // get the memo
-        System.out.println("Enter a memo");
+        System.out.print("Enter a memo: ");
         memo = sc.nextLine();
 
         // do the with drawal
