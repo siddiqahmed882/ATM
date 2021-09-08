@@ -15,15 +15,14 @@ public class ATM {
         do {
             System.out.printf("\n\nWelcome to %s\n\n", theBank.getName());
             System.out.print("Enter user ID: ");
-            userID = sc.nextLine();
+            userID = sc.next();
             System.out.print("Enter pin: ");
-            pin = sc.nextLine();
+            pin = sc.next();
 
             // try to get the user object corresponding to the id and pin combo
             authUser = theBank.userLogin(userID, pin);
             if (authUser == null) {
                 System.out.println("Incoorect User ID/pin combination. Please try again");
-
             }
         } while (authUser == null); // continue looping until successful login
         return authUser;
@@ -82,7 +81,7 @@ public class ATM {
 
         // get account whose transaction history to look at
         do {
-            System.out.printf("Enter the account number (1-%d) of the account whose tansactions you want to see",
+            System.out.printf("Enter the account number (1-%d) of the account whose tansactions you want to see :",
                     theUser.numAccounts());
             theAcct = sc.nextInt() - 1;
             if (theAcct < 0 || theAcct >= theUser.numAccounts()) {
@@ -213,7 +212,7 @@ public class ATM {
 
         // get the amount to transfer
         do {
-            System.out.printf("Enter the amount to transfer (max %.02f) : $", accBalance);
+            System.out.printf("Enter the amount to deposit (min %.02f) : $", accBalance);
             amount = sc.nextDouble();
             if (amount < 0) {
                 System.out.println("Amount must be greater than zero");
